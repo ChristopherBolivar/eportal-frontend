@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default class PostItem extends Component {
@@ -6,31 +7,38 @@ export default class PostItem extends Component {
         imageUrl: '',
         isLoaded: false
     }
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
             post: this.props.post
         })
         const getImageUrl = axios.get(`http://localhost:8000/wp-json/wp/v2/media/${this.props.post.featured_media}`)
-        getImageUrl.then(res =>{
-            console.log('here',res.data.media_details.sizes.full.source_url)
+        getImageUrl.then(res => {
             this.setState({
                 imageUrl: res.data.media_details.sizes.full.source_url,
-                isLoaded:true
+                isLoaded: true
             })
-        }).catch(err=>console.log(err))
+        }).catch(err => console.log(err))
     }
     render() {
-        const { title, excerpt } = this.props.post;
-        console.log('current state',this.state.imageUrl)
-        if(this.state.isLoaded){
+        const { id, title, excerpt } = this.props.post;
+        console.log('current state', id)
+        if (this.state.isLoaded) {
             return (
-                <div>
-                    <h2>{title.rendered}</h2>
-                    <img src={this.state.imageUrl} alt={title}/>
-                    <div dangerouslySetInnerHTML={{__html: excerpt.rendered}} />
+                <div className="container news-parent-div">
+                    <div className="row news-div">
+                        <div className="col-4 px-0">
+
+                            <img style={{ width: '200px', height: '200px'}} src={this.state.imageUrl} alt={title} />
+                        </div>
+                        <div className="col-8 px-1">
+                            <h2>{title.rendered}</h2>
+                            <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
+                            <Link to={`/news/${id}`}>View Post</Link>
+                        </div>
+                    </div>
                 </div>
             )
-        }else{
+        } else {
             return null
         }
     }

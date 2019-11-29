@@ -1,0 +1,18 @@
+.banner {
+    background:url('./img/fall-banner.jpg') no-repeat;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    background-size: cover;
+    padding: 20rem;
+}
+.news-div {
+    border: 1px solid #ccc;
+}
+.news-parent-div{
+    margin: 1rem;
+}
+.news-parent-container{
+    overflow: scroll;
+    max-height: 600px;
+}

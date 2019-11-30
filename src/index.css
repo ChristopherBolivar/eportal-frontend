@@ -13,6 +13,7 @@
     margin: 1rem;
 }
 .news-parent-container{
+    padding: 3rem;
     overflow: scroll;
     max-height: 600px;
 }

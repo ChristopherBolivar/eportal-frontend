@@ -14,7 +14,7 @@ export default class News extends Component {
                 isLoaded: true
             })
         })
-        .catch(err => console.log('Error:', err))
+        .catch(err => console.log('hello Error:', err))
     }
     render() {
         const {post, isLoaded} = this.state 

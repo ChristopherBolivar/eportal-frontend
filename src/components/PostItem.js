@@ -5,35 +5,39 @@ import axios from 'axios'
 export default class PostItem extends Component {
     state = {
         imageUrl: '',
+        post: [],
         isLoaded: false
     }
     componentDidMount() {
+        console.log(this.props.posts, 'props r here')
         this.setState({
-            post: this.props.post
+            post: this.props.posts,
+            isLoaded: true
         })
-        const getImageUrl = axios.get(`http://localhost:8000/wp-json/wp/v2/media/${this.props.post.featured_media}`)
-        getImageUrl.then(res => {
-            this.setState({
-                imageUrl: res.data.media_details.sizes.full.source_url,
-                isLoaded: true
-            })
-        }).catch(err => console.log(err))
+        //  axios.get(`http://localhost:8000/wp-json/wp/v2/media/${this.props.post.featured_media}`)
+        // .then(res => {
+        //     this.setState({
+        //         imageUrl: res.data.media_details.sizes.full.source_url,
+        //         isLoaded: true
+        //     }) 
+        // }).catch(err => console.log(err))
+    }
+    renderEvent = () => {
+        return this.state.post.map((post,i)=>{
+            console.log(post.title.rendered, '++++')
+        return <h1 key={i}>{post.title.rendered}</h1>
+       })
+       
     }
     render() {
-        const { id, title, excerpt } = this.props.post;
-        console.log('current state', id)
+        console.log(this.state.post, '=-=-=-=-=-=-=-')
         if (this.state.isLoaded) {
             return (
                 <div className="container news-parent-div">
                     <div className="row news-div">
                         <div className="col-4 px-0">
-
-                            <img style={{ width: '200px', height: '200px'}} src={this.state.imageUrl} alt={title} />
-                        </div>
-                        <div className="col-8 px-1">
-                            <h2>{title.rendered}</h2>
-                            <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
-                            <Link to={`/news/${id}`}>View Post</Link>
+                            {this.renderEvent()}
+                           
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@
 }
 .news-div {
     border: 1px solid #ccc;
+    margin: .5rem 0;
 }
 /* .news-div:after {
         content: '';
@@ -27,9 +28,7 @@
 .news-parent-div{
     margin: 1rem;
 }
-.news-parent-container{
-    padding: 3rem;
-}
+
 .answer{
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -48,4 +47,13 @@ li[class="question"]{
 }
 p[class="question-tag"]{
     color: black;
+}
+.survey {
+    color: #fff;
+    padding: .5rem;
+    margin: .5rem 0;
+    background: #00245b;
+}
+.survey h5, .survey p {
+    margin: 0;
 }

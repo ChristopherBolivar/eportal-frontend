@@ -3,14 +3,21 @@ import axios from 'axios'
 import PostItem from './PostItem'
 import Banner from './Banner'
 import Faq from './Faq'
+import Surveys from './Surveys'
 export default class Posts extends Component {
-    state = {
+    constructor(props) {
+        super(props)
+        this.state = {
+          
         posts: [],
         selectedPosts: [],
         isLoaded: false
-    }
+        }
+      }
+    
+   
     componentDidMount() {
-        axios.get('http://localhost:8000/wp-json/wp/v2/posts')
+        axios.get('http://localhost:8000/wp-json/wp/v2/posts?per_page=100')
             .then(res => {
                 let resCopy = [...res.data].sort((a,b)=>{ return a - b}).splice(0,3)
                 this.setState({
@@ -25,10 +32,11 @@ export default class Posts extends Component {
     showEventPagination = () =>{
         const posts = this.state.posts;
 
-        let pageAmount = posts.length / 3
+        let pageAmount = Math.ceil(posts.length / 3)
         let navArray = []
         let i=0
-        while(i <= pageAmount ){
+        console.log(pageAmount)
+        while(i < pageAmount ){
             i++
             navArray.push(i)
         }
@@ -37,7 +45,6 @@ export default class Posts extends Component {
     renderEvents = (e) =>{
        let indexes = [1,2,3]
        let pageNumber = Number(e.target.id.slice(5))
-       let startNumber = indexes[2] + 1
        let sortedPosts = this.state.posts.sort((a,b)=>{return a.id-b.id})
        let postRender = []
        let newArray = indexes.map((number,i)=>{
@@ -79,15 +86,16 @@ export default class Posts extends Component {
                         <div className="row">
                            <div className="col-8 ">
 
-                            <h1 style={{display: 'inline'}}>News / Events</h1> <ul style={{listStyle :'none', display: 'inline'}}>{this.showEventPagination()}</ul>
-                           <div className="news-parent-container">
+                            <h1 style={{display: 'inline'}}>News / Events</h1> 
+                          
                            <PostItem  posts={this.state.selectedPosts}/>
-                           </div>
+                           <ul style={{listStyle :'none', display: 'inline'}}>{this.showEventPagination()}</ul>
                            </div>
                            <div className="col-4">
-                           Surveys will go here
+                           <Surveys/>
                            </div>
-                        </div>
+
+                           </div>
                     </div>
                     <Faq />
                 </Fragment>

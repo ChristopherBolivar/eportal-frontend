@@ -30,25 +30,10 @@ export default class Posts extends Component {
           isLoaded: true
         });
       })
-      .then(res => {
-          let array = []
-        this.state.selectedPosts.map((item, i) => {
-          axios
-            .get(`http://localhost:8000/wp-json/wp/v2/media/${item.featured_media}`)
-            .then(res => {
-              array.push(res.data.media_details.sizes.full.source_url);
-            })
-            .then(res => {
-              this.setState({
-                imageUrl: array
-              });
-            })
-            .catch(err => console.log(err));
-        });
-      })
+    
       .catch(err => console.log("Error:", err));
   }
-
+  
   showEventPagination = () => {
     const posts = this.state.posts;
 
@@ -76,6 +61,7 @@ export default class Posts extends Component {
   renderEvents = e => {
     let indexes = [1, 2, 3];
     let pageNumber = Number(e.target.id.slice(5));
+    
     let sortedPosts = this.state.posts.sort((a, b) => {
       return b.id - a.id;
     });
@@ -107,25 +93,35 @@ export default class Posts extends Component {
       selectedPosts: postRender
     });
     let array = []
-    this.state.selectedPosts.map((item, i) => {
+    postRender.map((item, i) => {
       axios
         .get(`http://localhost:8000/wp-json/wp/v2/media/${item.featured_media}`)
         .then(res => {
-            console.log(res.status)
-          array.push(res.data.media_details.sizes.full.source_url);
+            console.log(res.data.media_details.sizes.full.source_url)
+         
+            array.push(res.data.media_details.sizes.full.source_url);
+         
         })
         .then(res => {
           this.setState({
             imageUrl: array
           });
         })
-        .catch(err => console.log(err,'yellow'));
+        .catch(err => 
+        
+            array.push('http://localhost:8000/wp-content/uploads/2019/12/avatar.png')
+          
+          );
     })
+    console.log(indexes,pageNumber)
   };
 
   render() {
     const { isLoaded } = this.state;
-    if (isLoaded && this.state.imageUrl.length === 3) {
+   
+    if (isLoaded) {
+
+    
       return (
         <Fragment>
           {/* <Banner /> */}
@@ -146,6 +142,7 @@ export default class Posts extends Component {
           </div>
           <Faq />
         </Fragment>
+        
       );
     }
     return <p>loading..</p>;

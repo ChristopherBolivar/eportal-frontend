@@ -11,6 +11,7 @@ export default class PostItem extends Component {
   }
 
   componentDidMount() {
+    document.querySelector('#item-1').click()
     console.log(this.props, "props r here");
     this.setState({
       post: this.props.posts,
@@ -29,14 +30,11 @@ export default class PostItem extends Component {
   };
 
   renderEvent = () => {
-    const divStyle = {
-      backgroundImage: "url(" + this.state.imageUrl + ")",
-      backgroundSize: "cover"
-    };
+   
     return this.state.post.map((post, i) => {
       return (
         <div key={i} className="row news-div">
-          <div style={divStyle} className="col-4 px-0">
+          <div className="col-4 px-0">
             <img width="150px" height="150px" src={this.state.imageUrl[i]} />
           </div>
           <div className="col-8 px-0">

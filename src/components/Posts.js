@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import PostItem from "./PostItem";
-import Banner from "./Banner";
 import Faq from "./Faq";
 import Surveys from "./Surveys";
+import 'bulma/css/bulma.css'
 export default class Posts extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +11,7 @@ export default class Posts extends Component {
       posts: [],
       selectedPosts: [],
       imageUrl: [],
+      fullsizeImg: [],
       isLoaded: false
     };
   }
@@ -30,17 +31,19 @@ export default class Posts extends Component {
           isLoaded: true
         });
       })
-    
+
       .catch(err => console.log("Error:", err));
+   
   }
+
   
+
   showEventPagination = () => {
     const posts = this.state.posts;
 
     let pageAmount = Math.ceil(posts.length / 3);
     let navArray = [];
     let i = 0;
-    console.log(pageAmount);
     while (i < pageAmount) {
       i++;
       navArray.push(i);
@@ -48,9 +51,10 @@ export default class Posts extends Component {
     return navArray.map((item, x) => {
       return (
         <li
+          className="pag-nav"
           id={`item-${x + 1}`}
           onClick={this.renderEvents}
-          style={{ display: "inline", margin: "0 .5rem" }}
+          style={{ display: "inline" }}
           key={item}
         >
           {item}
@@ -61,12 +65,12 @@ export default class Posts extends Component {
   renderEvents = e => {
     let indexes = [1, 2, 3];
     let pageNumber = Number(e.target.id.slice(5));
-    
+
     let sortedPosts = this.state.posts.sort((a, b) => {
       return b.id - a.id;
     });
     let postRender = [];
-    let newArray = indexes.map((number, i) => {
+    let newArray =  indexes.map((number, i) => {
       if (pageNumber === 1) {
         return indexes[i];
       }
@@ -92,36 +96,32 @@ export default class Posts extends Component {
     this.setState({
       selectedPosts: postRender
     });
-    let array = []
-    postRender.map((item, i) => {
-      axios
+    let thumbnail = [];
+    let fullsize = [];
+    return postRender.map((item, i) => {
+     return axios
         .get(`http://localhost:8000/wp-json/wp/v2/media/${item.featured_media}`)
         .then(res => {
-            console.log(res.data.media_details.sizes.full.source_url)
-         
-            array.push(res.data.media_details.sizes.full.source_url);
-         
+          thumbnail.push(res.data.media_details.sizes.thumbnail.source_url);
+          fullsize.push(res.data.media_details.sizes.full.source_url);
         })
         .then(res => {
           this.setState({
-            imageUrl: array
+            imageUrl: thumbnail,
+            fullsizeImg: fullsize
           });
         })
-        .catch(err => 
-        
-            array.push('http://localhost:8000/wp-content/uploads/2019/12/avatar.png')
-          
-          );
-    })
-    console.log(indexes,pageNumber)
+        .catch(err =>
+          thumbnail.push(
+            "http://localhost:8000/wp-content/uploads/2019/12/avatar.png"
+          )
+        );
+    });
   };
-
+  
   render() {
     const { isLoaded } = this.state;
-   
     if (isLoaded) {
-
-    
       return (
         <Fragment>
           {/* <Banner /> */}
@@ -129,9 +129,12 @@ export default class Posts extends Component {
             <div className="row">
               <div className="col-8 ">
                 <h1 style={{ display: "inline" }}>News / Events</h1>
-
-                <PostItem images={this.state.imageUrl} posts={this.state.selectedPosts} />
-                <ul style={{ listStyle: "none", display: "inline" }}>
+          
+                <PostItem
+                  images={this.state.imageUrl}
+                  posts={this.state.selectedPosts}
+                />
+                <ul className="pagination-ul" style={{ listStyle: "none", display: "inline" }}>
                   {this.showEventPagination()}
                 </ul>
               </div>
@@ -140,9 +143,11 @@ export default class Posts extends Component {
               </div>
             </div>
           </div>
+
           <Faq />
+
+          
         </Fragment>
-        
       );
     }
     return <p>loading..</p>;

@@ -54,6 +54,71 @@ p[class="question-tag"]{
     margin: .5rem 0;
     background: #00245b;
 }
+.survey:hover {
+   cursor: pointer;
+}
 .survey h5, .survey p {
     margin: 0;
+}
+.modal-space {
+    display: none;
+}
+ul[class="pagination-ul"] li {
+ margin: 0 0;
+}
+.pag-nav{
+    padding: .5rem;
+    margin: 0;
+}
+.pag-nav:hover{
+    cursor: pointer;
+}
+.pag-nav:nth-child(odd){
+    background: #ccc;
+}
+.pag-nav:nth-child(even){
+    background: #aaa;
+}
+.modal{
+    background: none !important;
+}
+#survey-modal{
+    background-color: #00245b !important;
+    color: #fff;
+}
+.modal-content, .survey-modal-content{
+    margin: 5% auto;
+    max-width: 60%;
+    position: relative;
+}
+.survey-modal-header{
+    padding: 15rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.survey-modal-title{
+    height: 200px;
+    max-height: 200px;
+    width: 100%;
+    background-size: 100% 95%;
+    top: 65%;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-position: center center;
+}
+.survey-title {
+    margin-top: 3rem;
+    text-align: center;
+}
+.survey-modal-nav{
+    border-radius: 10px 10px 0 0;
+    padding: 1rem;
+}
+.content {
+    margin-top: 4rem;
+    padding: 5rem;
+    color: #fff;
+    background: #00245b;
+    border-radius: 0 0 10px 10px;
 }

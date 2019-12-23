@@ -3,6 +3,10 @@ import axios from "axios";
 import PostItem from "./PostItem";
 import Faq from "./Faq";
 import Surveys from "./Surveys";
+import Banner from "./Banner";
+import Nav from './Nav'
+import Footer from './Footer'
+import Contact from './Contact'
 import 'bulma/css/bulma.css'
 export default class Posts extends Component {
   constructor(props) {
@@ -10,6 +14,7 @@ export default class Posts extends Component {
     this.state = {
       posts: [],
       selectedPosts: [],
+      surveys: [],
       imageUrl: [],
       fullsizeImg: [],
       isLoaded: false
@@ -18,7 +23,7 @@ export default class Posts extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8000/wp-json/wp/v2/posts?per_page=100")
+      .get("http://localhost:8000/wp-json/wp/v2/news?per_page=100")
       .then(res => {
         let resCopy = [...res.data]
           .sort((a, b) => {
@@ -31,8 +36,20 @@ export default class Posts extends Component {
           isLoaded: true
         });
       })
+      axios
+      .get("http://localhost:8000/wp-json/wp/v2/surveys?per_page=100")
+      .then(res => {
+        
+        this.setState({
+          surveys: res.data
+        });
+      })
+      
 
       .catch(err => console.log("Error:", err));
+      var today = new Date();
+      var day = today;
+      console.log(day.toDateString().split(" "))
    
   }
 
@@ -93,30 +110,38 @@ export default class Posts extends Component {
         postRender.push(post);
       }
     });
+
     this.setState({
       selectedPosts: postRender
-    });
-    let thumbnail = [];
-    let fullsize = [];
-    return postRender.map((item, i) => {
-     return axios
-        .get(`http://localhost:8000/wp-json/wp/v2/media/${item.featured_media}`)
-        .then(res => {
-          thumbnail.push(res.data.media_details.sizes.thumbnail.source_url);
-          fullsize.push(res.data.media_details.sizes.full.source_url);
-        })
-        .then(res => {
-          this.setState({
-            imageUrl: thumbnail,
-            fullsizeImg: fullsize
-          });
-        })
-        .catch(err =>
-          thumbnail.push(
-            "http://localhost:8000/wp-content/uploads/2019/12/avatar.png"
-          )
-        );
-    });
+     });
+     let postImg = this.state.selectedPosts.sort((a,b)=>{return b.id - a.id}).map((item,i)=>{
+       return item.acf.background_image
+     })
+     console.log(postImg, 'hello')
+     this.setState({
+      imageUrl: postImg
+     });
+    // let thumbnail = [];
+    // let fullsize = [];
+    // return postRender.map((item, i) => {
+    //  return axios
+    //     .get(`http://localhost:8000/wp-json/wp/v2/media/${item.featured_media}`)
+    //     .then(res => {
+    //       thumbnail.push(res.data.media_details.sizes.thumbnail.source_url);
+    //       fullsize.push(res.data.media_details.sizes.full.source_url);
+    //     })
+    //     .then(res => {
+    //       this.setState({
+    //         imageUrl: thumbnail,
+    //         fullsizeImg: fullsize
+    //       });
+    //     })
+    //     .catch(err =>
+    //       thumbnail.push(
+    //         "http://localhost:8000/wp-content/uploads/2019/12/avatar.png"
+    //       )
+    //     );
+    // });
   };
   
   render() {
@@ -124,10 +149,11 @@ export default class Posts extends Component {
     if (isLoaded) {
       return (
         <Fragment>
-          {/* <Banner /> */}
-          <div className="container mt-1">
+          <Nav />
+          <Banner surveys={this.state.surveys} posts={this.state.selectedPosts} />
+          <div className="container px-4 mt-1">
             <div className="row">
-              <div className="col-8 ">
+              <div className="col-12 col-sm-8">
                 <h1 style={{ display: "inline" }}>News / Events</h1>
           
                 <PostItem
@@ -138,18 +164,33 @@ export default class Posts extends Component {
                   {this.showEventPagination()}
                 </ul>
               </div>
-              <div className="col-4">
+              <div className="col-12 col-sm-4 survey-div">
                 <Surveys />
+                
               </div>
             </div>
           </div>
 
           <Faq />
-
-          
+          <Contact />
+          <Footer/>
         </Fragment>
       );
     }
-    return <p>loading..</p>;
+    return   (
+      <React.Fragment>
+       <div className="container">
+       <div className="spinner-grow text-primary" role="status">
+  <span className="sr-only">Loading...</span>
+</div>
+<div className="spinner-grow text-secondary" role="status">
+  <span className="sr-only">Loading...</span>
+</div>
+<div className="spinner-grow text-success" role="status">
+  <span className="sr-only">Loading...</span>
+</div>
+       </div>
+      </React.Fragment>
+  )
   }
 }

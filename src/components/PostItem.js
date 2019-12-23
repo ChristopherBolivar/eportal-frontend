@@ -36,15 +36,15 @@ export default class PostItem extends Component {
         <div id={`post-${i}`} key={i} className="row news-div">
           <div className="col-4 px-0">
             <img
-              alt={post.title.rendered}
+              alt={post.acf.accouncement_title}
               width="150px"
               height="150px"
               src={this.state.imageUrl[i]}
             />
           </div>
           <div className="col-8 px-0">
-            <h4>{post.title.rendered}</h4>
-            <p dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+            <h4>{post.acf.accouncement_title}</h4>
+            <p>{post.acf.content}</p>
             <a
               onClick={e => this.activateModal(e)}
               id={`post-${i}`}

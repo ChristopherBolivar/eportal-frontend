@@ -1,15 +1,171 @@
-.banner {
+
+ #menu-wrapper {
+	background: #00245b;
+	border-bottom: 1px solid #fff;
+}
+
+ #menu-items-wrapper {
+	float: right;
+}
+#menu ul li a {
+	color: #fff;
+	font-size: 12px;
+	display: block;
+	line-height: 92px;
+	padding: 0 20px;
+}
+
+#menu nav div > ul > li:hover > a {
+	background: #008062;
+	color: #fff;
+}
+
+#menu ul ul {
+	top: auto;
+	background: #008062;
+}
+
+#menu ul ul ul {
+	top: 0px;
+}
+
+#menu ul ul li:hover a {
+	background: #006d53;
+}
+
+#menu ul ul li a {
+	line-height: 60px;
+	border-bottom: 1px solid #006d53;
+}
+
+
+
+.parentul > a:after {
+	color: #fff;
+	font-family: "FontAwesome";
+	content: "\f0d7";
+	padding-left: 10px;
+}
+
+
+/* .banner {
     background:url('./img/fall-banner.jpg') no-repeat;
     background-position: center;
     color: #fff;
     text-align: center;
     background-size: cover;
     padding: 20rem;
+} */
+
+div[class*="carousel-inner"] {
+    padding: 0 !important;
+}
+.carousel-item{
+    padding: 10rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.news-parent-div{
+    position: relative;
 }
 .news-div {
-    border: 1px solid #ccc;
-    margin: .5rem 0;
+    margin: 1rem;
+    width: 600px;
+  min-height: 100px;
+  background-color: #ccc !important;
+
+    
+    clip-path: 
+      polygon(
+        0% 0px,
+        0px 0%,
+        calc(100% - 40px) 0px,
+        100% 40px,
+        100% calc(100% - 0px),
+        calc(100% - 0px) 100%,
+        0px 100%,
+        0px calc(100% - 0px)
+      );
+  
 }
+
+
+    #search-box {
+        float: right;
+        border-left: 1px solid #fff;
+        margin-top: 35px;
+        border-right: 1px solid #fff;
+        margin-left: 15px;
+    }
+    
+    
+    #search-box input {
+        background: none;
+        border: none;
+        font-size: 14px;
+        color: #fff;
+        padding: 0px;
+        line-height: 24px;
+        padding-left: 20px;
+        font-family: 'montserrathairline';
+        width: 111px;
+        transition: width ease 0.4s;
+        -o-transition: width ease 0.4s;
+        -ms-transition: width ease 0.4s;
+        -moz-transition: width ease 0.4s;
+        -webkit-transition: width ease 0.4s;
+    }
+    
+    #search-box .search-field:focus {
+        width: 160px;
+    }
+   
+    
+    #search-box {
+        float: left;
+    }
+    
+    #search-box input::-webkit-input-placeholder {
+        color: #fff;
+    }
+    
+    #search-box input:-moz-placeholder {
+        color: #fff;
+    }
+    
+    #search-box input::-moz-placeholder {
+        color: #fff;
+    }
+    
+    #search-box input:-ms-input-placeholder {
+        color: #fff;
+    }
+    
+    #search-box form {
+        position: relative;
+    }
+    
+    #search-box form:after {
+        color: #fff;
+        font-family: "FontAwesome";
+        content: "\f002";
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        right: 5px;
+        top: 1px;
+    }
+    
+    #search-box .submit {
+        width: auto;
+        text-indent: -99999px;
+        height: 24px;
+        width: 24px;
+        padding: 0;
+    }
+    
 /* .news-div:after {
         content: '';
         display: block;
@@ -43,17 +199,36 @@
 li[class="question"]{
    list-style: circle;
    color:green;
+   cursor: pointer;
    font-size: 1.5rem;
 }
 p[class="question-tag"]{
     color: black;
+    display:inline;
+}
+.survey-div{
+    position: relative;
 }
 .survey {
     color: #fff;
     padding: .5rem;
     margin: .5rem 0;
     background: #00245b;
+    position: relative;
+    clip-path: 
+    polygon(
+      0% 0px,
+      0px 0%,
+      calc(100% - 20px) 0px,
+      100% 20px,
+      100% calc(100% - 0px),
+      calc(100% - 0px) 100%,
+      0px 100%,
+      0px calc(100% - 0px)
+    );
 }
+
+
 .survey:hover {
    cursor: pointer;
 }
@@ -64,11 +239,13 @@ p[class="question-tag"]{
     display: none;
 }
 ul[class="pagination-ul"] li {
- margin: 0 0;
+ margin: 0 auto;
+ text-align: center;
 }
 .pag-nav{
     padding: .5rem;
-    margin: 0;
+    margin: 0 auto;
+    text-align: center;
 }
 .pag-nav:hover{
     cursor: pointer;
@@ -92,7 +269,7 @@ ul[class="pagination-ul"] li {
     position: relative;
 }
 .survey-modal-header{
-    padding: 15rem;
+    padding: 8rem;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -101,8 +278,8 @@ ul[class="pagination-ul"] li {
     height: 200px;
     max-height: 200px;
     width: 100%;
-    background-size: 100% 95%;
-    top: 65%;
+    background-size: 100% 67%;
+    top: 51%;
     background-repeat: no-repeat;
     position: absolute;
     background-position: center center;
@@ -121,4 +298,70 @@ ul[class="pagination-ul"] li {
     color: #fff;
     background: #00245b;
     border-radius: 0 0 10px 10px;
+}
+.carousel-inner {
+    background: #ccc;
+    text-align: center;
+    padding: 3rem;
+}
+.faqs{
+    padding: 2rem 2rem 0 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #007f61;
+    border-bottom: 1px solid #007f61;
+}
+.faq-row{
+    padding:  0;
+}
+.navigation {
+    background: #eee;
+    padding: 2rem;
+}
+.pagination-ul, .pagination-ul .pag-nav  {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+.faq-right-div {
+    padding: 12rem 12rem 12rem 0 !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    width: 100% !important;
+    background: url('img/people-pondering.png');
+}
+.contact {
+    background: #00245b;
+    padding: 2rem;
+    color: #fff;
+}
+.lead-title {
+    text-align: center;
+}
+#footer-wrapper {
+    text-align: center;
+    padding: 1rem;
+    border-top: solid 3px #389c84;
+    background: #f7ffff;
+}
+#footer-wrapper li, #footer-wrapper p{
+    display: inline;
+    font-size: .8rem;
+    list-style: none;
+}
+#footer-wrapper li:first-child {
+    border: none;
+}
+#footer-wrapper li {
+    
+    padding: .5rem 1rem;
+}
+.footer-links li {
+    border-left: 2px solid #e1e3e6;
+}
+.footer-menu{
+    border-top:  2px solid #e1e3e6;
+    border-bottom:  2px solid #e1e3e6;
+}
+.footer-menu ul {
+    padding: 1rem;
+    margin: 0;
 }

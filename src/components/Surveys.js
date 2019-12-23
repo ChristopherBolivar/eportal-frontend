@@ -50,9 +50,8 @@ export default class Surveys extends Component {
           id={`div-${i}`}
           className="survey"
           key={i}
-        >
-          <p dangerouslySetInnerHTML={{ __html: survey.content.rendered }} />
-          <h5>{survey.title.rendered}</h5>
+        ><p>test</p>
+          <h5>{survey.acf.survey_type.value}</h5>
         </div>
       );
     });
@@ -178,6 +177,18 @@ export default class Surveys extends Component {
         </Fragment>
       );
     }
-    return null;
+    return (
+      <React.Fragment>
+         <div className="spinner-grow text-primary" role="status">
+  <span className="sr-only">Loading...</span>
+</div>
+<div className="spinner-grow text-secondary" role="status">
+  <span className="sr-only">Loading...</span>
+</div>
+<div className="spinner-grow text-success" role="status">
+  <span className="sr-only">Loading...</span>
+</div>
+      </React.Fragment>
+    );
   }
 }

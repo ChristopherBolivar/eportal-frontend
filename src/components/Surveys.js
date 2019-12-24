@@ -50,8 +50,8 @@ export default class Surveys extends Component {
           id={`div-${i}`}
           className="survey"
           key={i}
-        ><p>test</p>
-          <h5>{survey.acf.survey_type.value}</h5>
+      ><p>{survey.acf.call_to_action}</p>
+    <h5>{survey.acf.quarter}&nbsp;{survey.acf.survey_type.value}</h5>
         </div>
       );
     });

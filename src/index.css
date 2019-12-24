@@ -62,6 +62,8 @@ div[class*="carousel-inner"] {
 }
 .carousel-item{
     padding: 10rem;
+    height: 600px;
+    max-height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

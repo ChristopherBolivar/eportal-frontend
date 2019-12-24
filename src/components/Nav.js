@@ -21,7 +21,7 @@ export default class Nav extends Component {
 							<div id="search-box">
 								<div role="search" method="get" className="search-form">
 									<form method="get" action=">">
-										<input type="search" className="search-field" placeholder="Search…" value="" name="s" title="Search for:"/>
+										<input type="search" className="search-field" placeholder="Search…"  name="s" title="Search for:"/>
 										<input type="submit" className="submit"/>
 									</form>
 								</div>

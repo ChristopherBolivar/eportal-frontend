@@ -121,27 +121,6 @@ export default class Posts extends Component {
      this.setState({
       imageUrl: postImg
      });
-    // let thumbnail = [];
-    // let fullsize = [];
-    // return postRender.map((item, i) => {
-    //  return axios
-    //     .get(`http://localhost:8000/wp-json/wp/v2/media/${item.featured_media}`)
-    //     .then(res => {
-    //       thumbnail.push(res.data.media_details.sizes.thumbnail.source_url);
-    //       fullsize.push(res.data.media_details.sizes.full.source_url);
-    //     })
-    //     .then(res => {
-    //       this.setState({
-    //         imageUrl: thumbnail,
-    //         fullsizeImg: fullsize
-    //       });
-    //     })
-    //     .catch(err =>
-    //       thumbnail.push(
-    //         "http://localhost:8000/wp-content/uploads/2019/12/avatar.png"
-    //       )
-    //     );
-    // });
   };
   
   render() {

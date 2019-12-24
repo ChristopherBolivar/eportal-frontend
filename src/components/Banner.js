@@ -36,15 +36,17 @@ export default class Banner extends Component {
        console.log(post.acf,'=-=-=-=-=--')
       
         if(post.acf.display_in_slider){
-          return (
-            <div key={i} style={{
-              backgroundImage: `url(${
-                post.acf.strive_media
-              })`
-            }} className="carousel-item">
-              <p>hello</p>
-           </div>
-          )
+            return (
+              <div key={i} style={{
+                
+                backgroundImage: `linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(255,255,255,1) 70%), url(${
+                  post.acf.media.url
+                })`
+              }} className="carousel-item">
+                <p>{post.acf.description}</p>
+        <p>{post.acf.call_to_action}</p>
+             </div>
+            )
         }
        
      })
@@ -55,9 +57,9 @@ export default class Banner extends Component {
             <div className="banner">
                 <div id="carouselExampleFade" className="carousel slide " data-ride="carousel">
   <div className="carousel-inner px-0">
-    <div className="carousel-item active">
-      DSFSDF
-    </div>
+  <div className="carousel-item active">
+                <p>hello</p>
+             </div>
     {this.renderSurveyCarouselSlides()}
   </div>
   <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">

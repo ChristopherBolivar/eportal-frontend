@@ -50,6 +50,7 @@ export default class Posts extends Component {
       var today = new Date();
       var day = today;
       console.log(day.toDateString().split(" "))
+      console.log(navigator.appCodeName,'the doc')
    
   }
 
@@ -91,12 +92,14 @@ export default class Posts extends Component {
       if (pageNumber === 1) {
         return indexes[i];
       }
+      
       while (i < indexes.length) {
         if (pageNumber > 1) {
           let result = indexes[2] * (pageNumber - 1);
           return (result += i) + 1;
         }
       }
+      return null
     });
 
     sortedPosts.forEach((post, i) => {
@@ -131,9 +134,9 @@ export default class Posts extends Component {
           <Nav />
           <Banner surveys={this.state.surveys} posts={this.state.selectedPosts} />
           <div className="container px-4 mt-1">
-            <div className="row">
-              <div className="col-12 col-sm-8">
-                <h1 style={{ display: "inline" }}>News / Events</h1>
+            <div className="row pt-4">
+              <div className="col-12 col-sm-8 pt-2 pb-2 news-post">
+                <h2 className="headline" style={{ display: "inline" }}>Upcoming events</h2>
           
                 <PostItem
                   images={this.state.imageUrl}

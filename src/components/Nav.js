@@ -4,11 +4,11 @@ export default class Nav extends Component {
     render() {
         return (
             <div id="menu-wrapper">
-			<div className="container-fluid">
+			<div className="container p-1">
 				<div className="row">
 					<div className="col-sm-3 col-md-4">
 						<div className="logo">
-							<a href="">
+							<a href="www.inktel.com">
 								<img width="150" src="https://www.inktel.com/wp-content/themes/inktel/images/inktel-logo.png" alt="Inktel" className="img-responsive"/>
 							</a>
 						</div>

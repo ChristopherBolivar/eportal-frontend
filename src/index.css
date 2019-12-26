@@ -1,4 +1,15 @@
-
+@font-face {
+	font-family: 'Gotham-Medium';
+	src: url('Gotham-Medium.otf');
+}
+@font-face {
+	font-family: 'Gotham-Book';
+	src: url('Gotham-Book.otf');
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: Gotham-Medium;
+}
+div,p, li, a {font-family: Gotham-Book;}
  #menu-wrapper {
 	background: #00245b;
 	border-bottom: 1px solid #fff;
@@ -48,15 +59,42 @@
 }
 
 
-/* .banner {
-    background:url('./img/fall-banner.jpg') no-repeat;
-    background-position: center;
-    color: #fff;
-    text-align: center;
-    background-size: cover;
-    padding: 20rem;
-} */
+.banner {
+   color:#fff;
+}
+.banner-div {
+    position: relative;
 
+}
+.banner-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    right:10%;
+    margin: 0 auto;
+}
+#bar {
+    background: green;
+    width: 1%;
+    padding: .1rem;
+    -webkit-animation-name: load; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 3s; /* Safari 4.0 - 8.0 */
+    animation-name: load;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+  }
+  
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes load {
+    from {width: 1%;}
+    to {width: 100%;}
+  }
+  
+  /* Standard syntax */
+  @keyframes load {
+    from {width: 1%;}
+    to {width: 100%;}
+  }
 div[class*="carousel-inner"] {
     padding: 0 !important;
 }
@@ -68,8 +106,18 @@ div[class*="carousel-inner"] {
     background-size: cover;
     background-position: center;
 }
+.headline{
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: #00245b;
+}
 .news-parent-div{
     position: relative;
+}
+.news-post{
+    border-right: 1px solid #006d53;
+    padding: 1rem 2rem !important;
 }
 .news-div {
     margin: 1rem;
@@ -210,6 +258,7 @@ p[class="question-tag"]{
 }
 .survey-div{
     position: relative;
+    padding: 1rem 2rem !important;
 }
 .survey {
     color: #fff;

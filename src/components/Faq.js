@@ -56,7 +56,10 @@ export default class Faq extends Component {
         <div className="container-fluid faqs">
           <div className="container">
           <div className="row faq-row">
-          <div className="container col-12 col-sm-6">{this.displayFAQ()}</div>
+          <div className="container col-12 col-sm-6">
+            <h3 className="headline">Frequently Asked Questions</h3>
+            {this.displayFAQ()}
+            </div>
           <div className="col-12 col-sm-6 faq-right-div">&nbsp;</div>
           </div>
           </div>

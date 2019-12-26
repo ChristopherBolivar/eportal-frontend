@@ -33,6 +33,9 @@ export default class Surveys extends Component {
           if (surveyType[0].toLowerCase() === "quarterly") {
             return survey.acf.strive_media;
           }
+          else{
+            return null
+          }
         });
         if (surveymedia.length > 0) {
           this.setState({
@@ -72,7 +75,7 @@ export default class Surveys extends Component {
     }
 
     console.log(index);
-  let surveyCopy = [... this.state.surveys]
+  let surveyCopy = [...this.state.surveys]
   let typeOf = ''
    surveyCopy.forEach((survey, i) => {
       if (
@@ -108,7 +111,7 @@ export default class Surveys extends Component {
     if (this.state.isLoaded /*&& this.state.surveyMedia.length > 0 */) {
       return (
         <Fragment>
-          <h1>Recent Surveys</h1>
+          <h3 className="headline">Employee Surveys</h3>
           <div>{this.renderSurveys()}</div>
 
           <div id="survey-modal" className="modal">

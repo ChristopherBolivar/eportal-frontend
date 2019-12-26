@@ -8,6 +8,7 @@ export default class PostItem extends Component {
       post: [],
       modalTitle: '',
       modalContent: '',
+      modalBG: '',
       isLoaded: false
     };
   }
@@ -32,19 +33,18 @@ export default class PostItem extends Component {
 
   renderEvent = () => {
     return this.state.post.map((post, i) => {
+      let content = [...post.acf.content.slice(0, 180)]
+
       return (
-        <div id={`post-${i}`} key={i} className="row news-div">
-          <div className="col-4 px-0">
-            <img
-              alt={post.acf.accouncement_title}
-              width="150px"
-              height="150px"
-              src={this.state.imageUrl[i]}
-            />
+       <div className="news-container" key={i}>
+         <div className="triangle"></div>
+          <div id={`post-${i}`}  className="row news-div">
+          <div style={{background: `no-repeat center url(${post.acf.news_media})`}} className="col-4 px-0 post-img">
+           
           </div>
-          <div className="col-8 px-0">
-            <h4>{post.acf.accouncement_title}</h4>
-            <p>{post.acf.content}</p>
+          <div className="col-8 p-2">
+            <h5>{post.acf.accouncement_title}</h5>
+            <p className="news-exerpt">{content}&nbsp;[...]</p>
             <a
               onClick={e => this.activateModal(e)}
               id={`post-${i}`}
@@ -55,6 +55,21 @@ export default class PostItem extends Component {
             </a>
           </div>
         </div>
+        <div className="news-empty-div row">
+        <div style={{opacity: '0%'}} className="col-4 px-0">
+            <img
+              alt={post.acf.accouncement_title}
+              width="260px"
+              height="280px"
+              src={post.acf.news_media}
+            />
+          </div>
+          <div style={{opacity: '0%'}} className="col-8 p-2">
+            <h5 >{post.acf.accouncement_title}</h5>
+            <p className="news-exerpt">{content}&nbsp;[...]</p>
+          </div>
+        </div>
+       </div>
       );
     });
   };
@@ -65,8 +80,9 @@ export default class PostItem extends Component {
     document.getElementById('modal').classList.add('is-active')
     this.setState(
       {
-        modalTitle: this.state.post[index].title.rendered,
-        modalContent: this.state.post[index].content.rendered
+        modalTitle: this.state.post[index].acf.accouncement_title,
+        modalContent: this.state.post[index].acf.content,
+        modalBG: this.state.post[index].acf.news_media,
       }
 
       )
@@ -92,10 +108,14 @@ export default class PostItem extends Component {
           <div id="modal" className="modal">
           <div className="modal-background">
             <div id="modal-content" className="modal-content">
-            <div className="modal-header">
-              {this.state.modalTitle}
+            <div style={{backgroundImage:`radial-gradient(circle, rgba(0,36,91,.7) 0%, rgba(0,24,60,.7) 61%), url(${
+                  this.state.modalBG
+                }) `}} className="modal-header">
+              <h1>{this.state.modalTitle}</h1>
             </div>
+            <div className="modal-text container">
             {this.state.modalContent}
+            </div>
             </div>
             <button
               onClick={this.modalHide}

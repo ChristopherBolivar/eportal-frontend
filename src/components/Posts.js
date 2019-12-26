@@ -75,7 +75,7 @@ export default class Posts extends Component {
           style={{ display: "inline" }}
           key={item}
         >
-          {item}
+          &bull;
         </li>
       );
     });
@@ -120,7 +120,6 @@ export default class Posts extends Component {
      let postImg = this.state.selectedPosts.sort((a,b)=>{return b.id - a.id}).map((item,i)=>{
        return item.acf.background_image
      })
-     console.log(postImg, 'hello')
      this.setState({
       imageUrl: postImg
      });
@@ -136,13 +135,13 @@ export default class Posts extends Component {
           <div className="container px-4 mt-1">
             <div className="row pt-4">
               <div className="col-12 col-sm-8 pt-2 pb-2 news-post">
-                <h2 className="headline" style={{ display: "inline" }}>Upcoming events</h2>
+                <h2 className="headline">Upcoming events</h2>
           
                 <PostItem
                   images={this.state.imageUrl}
                   posts={this.state.selectedPosts}
                 />
-                <ul className="pagination-ul" style={{ listStyle: "none", display: "inline" }}>
+                <ul className="pagination-ul" style={{ listStyle: "none", display: "inline", margin: '0 50%' }}>
                   {this.showEventPagination()}
                 </ul>
               </div>

@@ -48,7 +48,8 @@ export default class Banner extends Component {
                   post.acf.media.url
                 }) `,
                 backgroundBlendMode: 'multiply',
-              }} className="carousel-item active">
+              }}
+               className="carousel-item active">
 
                 <div className="banner-content">
                 <h1>{post.acf.call_to_action}</h1>
@@ -73,11 +74,9 @@ export default class Banner extends Component {
                 <h1>{post.acf.call_to_action}</h1>
                 <h6>{post.acf.description}</h6>
                 </div>
+                
              </div>
-             <div className="loading-bar">
-             <div id="bar" className="bar">
-             </div>
-           </div>
+             
               </React.Fragment>
             )
            }
@@ -93,22 +92,26 @@ export default class Banner extends Component {
         return (
           <React.Fragment>
               <div className="banner">
-                <div id="carouselExampleFade" className="carousel slide " data-interval="false" data-ride="carousel">
-  <div className="carousel-inner px-0">
- 
-    {this.renderSurveyCarouselSlides()}
-  </div>
-  <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span className="sr-only">Previous</span>
-  </a>
-  <a id="next" className="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-    <span className="sr-only">Next</span>
-  </a>
-</div>
+                <div id="carouselExampleFade" className="carousel slide "  data-interval="false" data-pause="true" data-ride="carousel">
+                  <div className="carousel-inner px-0">
+                
+                    {this.renderSurveyCarouselSlides()}
+                  </div>
+                  <a className="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Previous</span>
+                  </a>
+                  <a id="next" className="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Next</span>
+                  </a>
+                </div>
 
             </div>
+            <div className="loading-bar">
+             <div id="bar" className="bar">
+             </div>
+           </div>
             
           </React.Fragment>
         )

@@ -117,13 +117,58 @@ div[class*="carousel-inner"] {
 }
 .news-post{
     border-right: 1px solid #006d53;
-    padding: 1rem 2rem !important;
+    padding: 0 1rem !important;
 }
-.news-div {
-    margin: 1rem;
+div[class*="news-post"] h2 {
+    margin-left: 2rem;
+}
+
+.news-container {
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+div[class*="news-div"]{
+    position: absolute;
+    z-index: 99;
+    left: 2rem;
+    top: -.95rem;
+    height: 160px !important;
+    max-height: 160px !important;
+    width:91%;
+    background-color: #fff !important;
+}
+div[class*="triangle"]{
+      border-top: 30px solid #006d53;
+      border-left: 30px solid transparent;
+      top: 0.3rem;
+      right:2.9rem;
+    position: absolute;
+    z-index: 100;
+}
+div[class*="news-div"] a {
+    font-size: .8rem;
+}
+div[class*="news-div"] a,div[class*="news-div"] h5{
+    padding: .2rem;
+}
+div[class*="news-div"] p{
+    padding: .3rem;
+    overflow: hidden;
+}
+div[class*="news-empty-div"] {
+    background-color: #00245b;
+
+    width:91.3% !important;
+    height: 162px !important;
+    max-height: 162px !important; 
+    z-index: 90;
+}
+.news-div,div[class*="news-empty-div"] {
+    
+    margin:  1rem;
     width: 600px;
   min-height: 100px;
-  background-color: #ccc !important;
 
     
     clip-path: 
@@ -234,7 +279,9 @@ div[class*="carousel-inner"] {
 .news-parent-div{
     margin: 1rem;
 }
-
+p[class="news-exerpt"]{
+    font-size: .7rem;
+}
 .answer{
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -290,26 +337,44 @@ p[class="question-tag"]{
     display: none;
 }
 ul[class="pagination-ul"] li {
- margin: 0 auto;
  text-align: center;
 }
-.pag-nav{
+li[class*="pag-nav"]{
     padding: .5rem;
-    margin: 0 auto;
-    text-align: center;
+    font-size: 1.5rem;
 }
 .pag-nav:hover{
     cursor: pointer;
 }
-.pag-nav:nth-child(odd){
-    background: #ccc;
-}
-.pag-nav:nth-child(even){
-    background: #aaa;
-}
+
 .modal{
     background: none !important;
 }
+.modal-header{
+    padding: 7rem !important;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.modal-header h1 {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    bottom: -.5rem;
+    left: 2rem;
+    color: #fff;
+    text-transform: uppercase;
+
+    text-align: left !important;
+}
+div[class="modal-content"]{
+    background: #00245b;
+    color: #fff;
+}
+div[class="modal-text container"] {
+    padding: 2rem;
+}
+
 #survey-modal{
     background-color: #00245b !important;
     color: #fff;
@@ -361,6 +426,9 @@ ul[class="pagination-ul"] li {
     border-top: 1px solid #007f61;
     border-bottom: 1px solid #007f61;
 }
+div[class*="faqs"] li , div[class*="faqs"] p {
+    font-size: 1rem;
+}
 .faq-row{
     padding:  0;
 }
@@ -370,7 +438,9 @@ ul[class="pagination-ul"] li {
 }
 .pagination-ul, .pagination-ul .pag-nav  {
     text-align: center !important;
-    margin: 0 auto !important;
+}
+div[class*="post-img"]{
+    background-size: cover !important;
 }
 .faq-right-div {
     padding: 12rem 12rem 12rem 0 !important;

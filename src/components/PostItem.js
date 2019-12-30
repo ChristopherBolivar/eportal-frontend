@@ -33,7 +33,7 @@ export default class PostItem extends Component {
 
   renderEvent = () => {
     return this.state.post.map((post, i) => {
-      let content = [...post.acf.content.slice(0, 180)]
+      let content = [...post.acf.content.slice(0, 600)]
 
       return (
        <div className="news-container" key={i}>

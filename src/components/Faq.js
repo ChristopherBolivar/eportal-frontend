@@ -8,7 +8,7 @@ export default class Faq extends Component {
   };
   componentDidMount() {
     axios
-      .get("http://localhost:8000/wp-json/wp/v2/faq")
+      .get("http://localhost:8000/wp-json/wp/v2/faq?per_page=100")
       .then(res => {
        
         this.setState({
@@ -22,7 +22,7 @@ export default class Faq extends Component {
     let sortedFaqs = [...this.state.faqs]
     return sortedFaqs.map((post, i) => {
       return (
-        <div key={i}>
+          <div className="faq-div" key={i}>
           <li onClick={this.logThis} className="question">
       <p className="question-tag">{post.acf.question}</p>
           </li>
@@ -36,7 +36,10 @@ export default class Faq extends Component {
     });
   };
   logThis = e => {
-    
+    // console.log(e.target.parentNode.parentNode.parentNode.children)
+    // e.target.parentNode.parentNode.parentNode.children.map((item,i)=>{
+    //   console.log(item)
+    // })
     if (e.target.parentNode.parentNode.childNodes[1].classList[1] === "deactive") {
       return e.target.parentNode.parentNode.childNodes[1].setAttribute(
         "class",
@@ -44,24 +47,23 @@ export default class Faq extends Component {
       );
     } else if ((e.target.parentNode.parentNode.childNodes[1].classList[1] === "active")) {
      
-      return e.target.parentNode.parentNode.childNodes[1].setAttribute(
+      return (e.target.parentNode.parentNode.childNodes[1].setAttribute(
         "class",
         "answer  deactive"
-      );
+      )
+      )
     }
   };
   render() {
     if (this.state.isLoaded) {
       return (
         <div className="container-fluid faqs">
-          <div className="container">
           <div className="row faq-row">
-          <div className="container col-12 col-sm-6">
+          <div className="container da-faqs col-12 col-sm-6">
             <h3 className="headline">Frequently Asked Questions</h3>
             {this.displayFAQ()}
             </div>
           <div className="col-12 col-sm-6 faq-right-div">&nbsp;</div>
-          </div>
           </div>
         </div>
       );

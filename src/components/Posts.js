@@ -50,7 +50,6 @@ export default class Posts extends Component {
       var today = new Date();
       var day = today;
       console.log(day.toDateString().split(" "))
-      console.log(navigator.appCodeName,'the doc')
    
   }
 
@@ -127,12 +126,14 @@ export default class Posts extends Component {
   
   render() {
     const { isLoaded } = this.state;
+    
+
     if (isLoaded) {
       return (
         <Fragment>
           <Nav />
           <Banner surveys={this.state.surveys} posts={this.state.selectedPosts} />
-          <div className="container px-4 mt-1">
+          <div className="container-fluid px-4 mt-1">
             <div className="row pt-4">
               <div className="col-12 col-sm-8 pt-2 pb-2 news-post">
                 <h2 className="headline">Upcoming events</h2>
@@ -160,7 +161,7 @@ export default class Posts extends Component {
     }
     return   (
       <React.Fragment>
-       <div className="container">
+       <div style={{margin: '25% 0'}} className="d-flex justify-content-center">
        <div className="spinner-grow text-primary" role="status">
   <span className="sr-only">Loading...</span>
 </div>

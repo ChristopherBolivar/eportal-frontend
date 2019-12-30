@@ -6,7 +6,6 @@ export default class Banner extends Component {
     surveys: []
   }
   componentDidMount(){
-   console.log()
     this.setState({
       posts: this.props.posts,
       surveys: this.props.surveys
@@ -14,18 +13,19 @@ export default class Banner extends Component {
     })
     setInterval(()=>{
       document.getElementById('next').click()
-      console.log(document.querySelector('#bar').style,'++++')
     },10000)
   }
   renderCarouselSlides = () =>{
    return this.state.posts.map((post,i)=>{
-      console.log(i,'+++++')
       if(post.acf.display_in_slider){
         return (
-          <div style={{
+          <div
+          key={i}
+           style={{
             backgroundImage: `url(${
               post.acf.background_image
             })`
+            
           }} className="carousel-item">
             <h1>{post.acf.accouncement_title}</h1>
             <p>{post.acf.call_to_action}</p>
@@ -60,7 +60,6 @@ export default class Banner extends Component {
            }
            else if(i !== 0 ){
             return (
-              <React.Fragment>
                 <div className="banner-div" key={i} style={{
                 
                 backgroundImage: `radial-gradient(circle, rgba(0,36,91,.7) 0%, rgba(0,24,60,.7) 61%), url(${
@@ -77,7 +76,6 @@ export default class Banner extends Component {
                 
              </div>
              
-              </React.Fragment>
             )
            }
            return null
@@ -88,7 +86,6 @@ export default class Banner extends Component {
      })
    }
     render() {
-      console.log(this.state.surveys, 'props')
         return (
           <React.Fragment>
               <div className="banner">

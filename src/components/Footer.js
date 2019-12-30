@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Footer extends Component {
     render() {
@@ -14,7 +13,7 @@ export default class Footer extends Component {
                             
 							<ul className="social-media-2">
 
-								<li className="social"><a href="https://twitter.com/inktel" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon="faCoffee" /></a></li>
+								<li className="social"><a href="https://twitter.com/inktel" target="_blank" rel="noopener noreferrer"></a></li>
 								<li className="social"><a href="https://www.linkedin.com/company/inktel" target="_blank" rel="noopener noreferrer"><i className="fa fa-linkedin"></i></a></li>
 								<li className="social"><a href="https://www.facebook.com/inktel" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook"></i></a></li>
 								<li className="social social-last"><a href="https://www.instagram.com/inktel/" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram"></i></a></li>

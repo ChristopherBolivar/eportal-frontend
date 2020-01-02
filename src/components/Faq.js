@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+import PonderingPeople from '../img/people-pondering.png';
 import axios from "axios";
 
 export default class Faq extends Component {
@@ -36,10 +38,6 @@ export default class Faq extends Component {
     });
   };
   logThis = e => {
-    // console.log(e.target.parentNode.parentNode.parentNode.children)
-    // e.target.parentNode.parentNode.parentNode.children.map((item,i)=>{
-    //   console.log(item)
-    // })
     if (e.target.parentNode.parentNode.childNodes[1].classList[1] === "deactive") {
       return e.target.parentNode.parentNode.childNodes[1].setAttribute(
         "class",
@@ -63,7 +61,10 @@ export default class Faq extends Component {
             <h3 className="headline">Frequently Asked Questions</h3>
             {this.displayFAQ()}
             </div>
-          <div className="col-12 col-sm-6 faq-right-div">&nbsp;</div>
+          <div className="col-12 col-sm-6 faq-right-div p-1">
+            <img id="pondering-people"  src={PonderingPeople} />
+            
+          </div>
           </div>
         </div>
       );

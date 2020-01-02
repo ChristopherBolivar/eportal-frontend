@@ -94,7 +94,7 @@ div[class*="carousel-inner"] {
     padding: 0 1rem !important;
 }
 div[class*="news-post"] h2 {
-    margin-left: 5rem;
+    margin-left: 3rem;
 }
 
 .news-container {
@@ -155,6 +155,10 @@ div[class*="news-div"],div[class*="news-empty-div"] {
         0px calc(100% - 0px)
       );
   
+}
+.title {
+    text-transform: uppercase;
+    font-size: 1.3rem;
 }
     #search-box, .social-media-nav {
         margin: 1.5rem .5rem !important;
@@ -455,11 +459,18 @@ div[class*="faq-div"] {
     margin-left: 4.5rem;
 }
 .faq-right-div {
-    padding: 20rem 20rem 0 20rem!important;
-    margin-bottom: -1rem;
+    /* padding: 20rem 20rem 0 20rem!important;
+     margin-bottom: -1rem;
     background-size:contain!important;
     background-position: center center !important;
-    background: no-repeat url('img/people-pondering.png');
+    background: no-repeat url('img/people-pondering.png'); */ 
+    position: relative;
+}
+#pondering-people {
+    position: absolute;
+    bottom: -2.2rem !important;
+    padding: 1rem;
+    width: 75%;
 }
 .contact {
     background: #00245b;
@@ -566,13 +577,18 @@ div[class*="faq-div"] {
     }
     
     .post-img{
-        display: none;
+        height: 80px;
     }
     .news-content {
         flex: 100% !important;
         max-width: 100% !important;
         padding: 0;
         margin: 0;
+    }
+    .news-exerpt{
+        height: 50px;
+        max-height: 50px;
+        overflow: scroll;
     }
     div[class*="news-div"]{
         left: 0.05rem;
@@ -586,6 +602,22 @@ div[class*="faq-div"] {
         max-height: 262px !important; 
         z-index: 90;
         width: 89.5%;
+    }
+    .banner-content {
+        top: 40%;
+        right: 10%;
+        left: 10;
+    }
+    .banner-content h1 {
+        font-size: 1.5rem;
+
+    }
+    .banner-content h6 {
+        font-size: 1rem;
+        text-align: left;
+    }
+    .title {
+        font-size: 1rem;
     }
 }
 

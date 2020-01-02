@@ -39,11 +39,11 @@ export default class PostItem extends Component {
        <div className="news-container" key={i}>
          <div className="triangle"></div>
           <div id={`post-${i}`}  className="row news-div">
-          <div style={{background: `no-repeat center url(${post.acf.news_media})`}} className="col-4 px-0 post-img">
+          <div style={{background: `no-repeat center url(${post.acf.news_media})`}} className="col-12 col-md px-0 post-img">
            
           </div>
           <div className="news-content col-8 p-2">
-            <h5>{post.acf.accouncement_title}</h5>
+            <h5 className="title">{post.acf.accouncement_title}</h5>
             <p className="news-exerpt">{content}&nbsp;[...]</p>
             <a
               onClick={e => this.activateModal(e)}

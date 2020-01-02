@@ -8,7 +8,7 @@ export default class Faq extends Component {
   };
   componentDidMount() {
     axios
-      .get("http://localhost:8000/wp-json/wp/v2/faq?per_page=100")
+      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/faq?per_page=100")
       .then(res => {
        
         this.setState({

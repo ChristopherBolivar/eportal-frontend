@@ -33,7 +33,7 @@ export default class PostItem extends Component {
 
   renderEvent = () => {
     return this.state.post.map((post, i) => {
-      let content = [...post.acf.content.slice(0, 600)]
+      let content = [...post.acf.content.slice(0, 300)]
 
       return (
        <div className="news-container" key={i}>
@@ -42,7 +42,7 @@ export default class PostItem extends Component {
           <div style={{background: `no-repeat center url(${post.acf.news_media})`}} className="col-4 px-0 post-img">
            
           </div>
-          <div className="col-8 p-2">
+          <div className="news-content col-8 p-2">
             <h5>{post.acf.accouncement_title}</h5>
             <p className="news-exerpt">{content}&nbsp;[...]</p>
             <a

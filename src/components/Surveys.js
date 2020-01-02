@@ -18,7 +18,7 @@ export default class Surveys extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8000/wp-json/wp/v2/surveys")
+      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/surveys")
       .then(res => {
         this.setState({
           surveys: res.data,

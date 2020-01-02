@@ -23,7 +23,7 @@ export default class Posts extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8000/wp-json/wp/v2/news?per_page=100")
+      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/news?per_page=100")
       .then(res => {
         let resCopy = [...res.data]
           .sort((a, b) => {
@@ -37,7 +37,7 @@ export default class Posts extends Component {
         });
       })
       axios
-      .get("http://localhost:8000/wp-json/wp/v2/surveys?per_page=100")
+      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/surveys?per_page=100")
       .then(res => {
         
         this.setState({
@@ -135,7 +135,7 @@ export default class Posts extends Component {
           <Banner surveys={this.state.surveys} posts={this.state.selectedPosts} />
           <div className="container-fluid px-4 mt-1">
             <div className="row pt-4">
-              <div className="col-12 col-sm-8 pt-2 pb-2 news-post">
+              <div className="col-12 col-lg-8 pt-2 pb-2 news-post">
                 <h2 className="headline">Upcoming events</h2>
           
                 <PostItem
@@ -146,7 +146,7 @@ export default class Posts extends Component {
                   {this.showEventPagination()}
                 </ul>
               </div>
-              <div className="col-12 col-sm-4 survey-div">
+              <div className="col-12 col-lg-4 survey-div">
                 <Surveys />
                 
               </div>

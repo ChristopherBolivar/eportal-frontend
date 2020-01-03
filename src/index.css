@@ -94,7 +94,7 @@ div[class*="carousel-inner"] {
     padding: 0 1rem !important;
 }
 div[class*="news-post"] h2 {
-    margin-left: 3rem;
+    margin-left: 4rem;
 }
 
 .news-container {
@@ -105,18 +105,18 @@ div[class*="news-post"] h2 {
 div[class*="news-div"]{
     position: absolute;
     z-index: 99;
-    left: 0.05rem;
-    top: -.9rem;
+    left: .01%;
+    bottom: -7.5%;
     height: 200px !important;
-    max-height: 200px !important;
-    width:90%;
+    max-height: 200px!important;
+    width:99%;
     background-color: #fff !important;
 }
 div[class*="triangle"]{
       border-top: 25px solid #006d53;
       border-left: 25px solid transparent;
-      top: 0.5rem;
-      right:6rem;
+      top: 3%;
+      right:0;
     position: absolute;
     z-index: 100;
 }
@@ -132,10 +132,10 @@ div[class*="news-div"] p{
 }
 div[class*="news-empty-div"] {
     background-color: #00245b;
-    height: 202px !important;
+    height:202px!important;
     max-height: 202px !important; 
     z-index: 90;
-    width: 90.2%;
+    width: 99.1%;
 }
 div[class*="news-div"],div[class*="news-empty-div"] {
 
@@ -159,6 +159,8 @@ div[class*="news-div"],div[class*="news-empty-div"] {
 .title {
     text-transform: uppercase;
     font-size: 1.3rem;
+    padding: .5 !important;
+    margin: 0 !important;
 }
     #search-box, .social-media-nav {
         margin: 1.5rem .5rem !important;
@@ -240,23 +242,13 @@ div[class*="news-div"],div[class*="news-empty-div"] {
         display: inline;
         margin: 0 .5rem;
     }
-/* .news-div:after {
-        content: '';
-        display: block;
-        background: green;
-        width: 50px;
-        height: 50px !;
-        transform: rotate(60deg);
-        position: relative;
-        padding: 1rem;
-        border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 25px solid #555;
-        top: -100%;
-        left: 95%;
-} */
 .news-parent-div{
     margin: 1rem;
+}
+.news-exerpt, .viewmore {
+
+    padding: .5rem !important;
+    margin: 0 auto !important;
 }
 p[class="news-exerpt"]{
     font-size: .7rem;
@@ -286,9 +278,7 @@ p[class="question-tag"]{
     position: relative;
     padding: 1rem 2rem !important;
 }
-.survey-div h3 {
-    margin-left: 1.5rem;
-}
+
 .survey {
     color: #fff;
     padding: .5rem;
@@ -337,6 +327,7 @@ li[class*="pag-nav"]{
     background-size: cover;
     background-position: center;
     position: relative;
+    height: 300px;
 }
 .modal-header h1 {
     position: absolute;
@@ -392,7 +383,7 @@ div[class="modal-text container"] {
 }
 .survey-divtwo {
     position: relative;
-    padding: .5rem  .5rem .5rem 1.5rem!important;
+    padding: .5rem  0!important;
     margin: 0;
     width: 100% !important;
 }
@@ -402,8 +393,8 @@ div[class="modal-text container"] {
 div[class*="survey-triangle"]{
     border-top: 20px solid #006d53;
     border-left: 20px solid transparent;
-    top: 1.2rem;
-    right:.7rem;
+    top: 20%;
+    right:.5%;
   position: absolute;
   z-index: 100;
 }
@@ -520,12 +511,14 @@ div[class*="faq-div"] {
 
 /* RESPONSIVE */
 @media (max-width: 1300px) { 
-    div[class="triangle"]{
-        top: 0.4rem;
-        right:4rem;
+    div[class*="news-div"]{
+        left: .2%;
+        top: -.9rem;
+       
     }
     div[class*="news-post"] h2 {
         margin-left: 2rem !important;
+        
     }
     div[class*="da-faqs"] h3 {
         margin-left: 1rem !important;
@@ -536,8 +529,7 @@ div[class*="faq-div"] {
     .contact-container {
         padding: 0 2rem !important;
     }
-} 
-/* Medium devices (tablets, 768px and up) */
+   
 @media (max-width: 1200px) { 
     div[class*="news-post"] h2, div[class*="da-faqs"] h3 {
         margin: 0 auto;
@@ -555,14 +547,24 @@ div[class*="faq-div"] {
     }
     div[class="triangle"]{
         top: 0.5rem;
-        right:1.2rem;
+        right:3%;
   }
   div[class*="faq-div"]{
       margin: 0.5rem auto;
+      text-align: center;
   }
   .faq-right-div {
       display: none;
   }
+  .modal-content, .survey-modal-content {
+    width: 80% !important;
+    max-width: 80%;
+    margin: 5%  auto;
+}
+.modal-header h1 {
+    font-size: 2rem;
+}
+} 
     
  }
 
@@ -603,6 +605,10 @@ div[class*="faq-div"] {
         z-index: 90;
         width: 89.5%;
     }
+    div[class="triangle"]{
+        top: 2%;
+        right:7%;
+  }
     .banner-content {
         top: 40%;
         right: 10%;
@@ -618,6 +624,28 @@ div[class*="faq-div"] {
     }
     .title {
         font-size: 1rem;
+    }
+    .modal-content {
+        height: 100%;
+        max-height: 90%;
+        overflow: scroll;
+    }
+    .modal-header h1 {
+        font-size: 1.2rem;
+        bottom: 1%
+    }
+    .modal-text {
+        font-size: .8rem;
+    }
+    .survey {
+        padding: .2rem;
+    }
+    div[class*="survey-triangle"]{
+        top: 20%;
+        right:2%;
+    }
+    .survey p {
+        font-size: .7rem;
     }
 }
 

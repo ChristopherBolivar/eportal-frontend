@@ -14,7 +14,7 @@ a, a:hover, a:visited {
 h1,h2,h3,h4,h5,h6{
     font-family: Gotham-Medium;
 }
-div,p, li, a,  input {font-family: Gotham-Book !important;}
+div,p, li, a,  input, select, option {font-family: Gotham-Book !important;}
 
  #menu-wrapper {
 	background: #00245b;
@@ -258,12 +258,7 @@ p[class="news-exerpt"]{
     border-radius: 5px;
     padding: 1rem;
 }
-.active{
-    display: block;
-}
-.deactive{
-    display: none;
-}
+
 li[class="question"]{
    list-style: circle;
    color:green;
@@ -471,8 +466,20 @@ div[class*="faq-div"] {
 .contact-container {
     padding: 0 2rem !important;
 }
+.active{
+    display: block;
+}
+.deactive{
+    display: none !important;
+}
+.alert {
+    margin-top: 1rem;
+}
 .lead-title {
     text-align: center;
+}
+.result {
+    color : #fff !important;
 }
 #footer-wrapper {
     text-align: center;

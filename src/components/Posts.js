@@ -15,9 +15,12 @@ export default class Posts extends Component {
       posts: [],
       selectedPosts: [],
       surveys: [],
+      faqs: [],
       imageUrl: [],
       fullsizeImg: [],
-      isLoaded: false
+      PostisLoaded: false,
+      SurveyisLoaded: false,
+      FaqisLoaded: false,
     };
   }
 
@@ -25,15 +28,16 @@ export default class Posts extends Component {
     axios
       .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/news?per_page=100")
       .then(res => {
+        let theData = [...res.data]
         let resCopy = [...res.data]
           .sort((a, b) => {
             return b - a;
           })
           .splice(0, 3);
         this.setState({
-          posts: res.data,
+          posts: theData,
           selectedPosts: resCopy,
-          isLoaded: true
+          PostisLoaded: true,
         });
       })
       axios
@@ -41,12 +45,24 @@ export default class Posts extends Component {
       .then(res => {
         
         this.setState({
-          surveys: res.data
+          surveys: res.data,
+          SurveyisLoaded: true,
         });
       })
       
 
       .catch(err => console.log("Error:", err));
+      axios
+      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/faq?per_page=100")
+      .then(res => {
+       
+        this.setState({
+
+          faqs: res.data,
+          FaqisLoaded: true
+        });
+      })
+      .catch(err => console.log(err));
       var today = new Date();
       var day = today;
       console.log(day.toDateString().split(" "))
@@ -128,10 +144,12 @@ export default class Posts extends Component {
     const { isLoaded } = this.state;
     
 
-    if (isLoaded) {
+    if (this.state.PostisLoaded &&
+      this.state.SurveyisLoaded &&
+      this.state.FaqisLoaded) {
       return (
         <Fragment>
-          <Nav />
+          <Nav surveys={this.state.surveys} posts={this.state.posts} faqs={this.state.faqs} />
           <Banner surveys={this.state.surveys} posts={this.state.selectedPosts} />
           <div className="container-fluid px-4 mt-1">
             <div className="row pt-4">
@@ -139,7 +157,6 @@ export default class Posts extends Component {
                 <h2 className="headline">Upcoming events</h2>
           
                 <PostItem
-                  images={this.state.imageUrl}
                   posts={this.state.selectedPosts}
                 />
                 <ul className="pagination-ul" style={{ listStyle: "none", display: "inline", margin: '0 50%' }}>
@@ -147,13 +164,13 @@ export default class Posts extends Component {
                 </ul>
               </div>
               <div className="col-12 col-lg-4 survey-div">
-                <Surveys />
+                <Surveys surveys={this.state.surveys} />
                 
               </div>
             </div>
           </div>
 
-          <Faq />
+          <Faq faqs={this.state.faqs} />
           <Contact />
           <Footer/>
         </Fragment>

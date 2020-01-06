@@ -14,11 +14,14 @@ export default class PostItem extends Component {
   }
 
   componentDidMount() {
-    document.querySelector("#item-1").click();
     this.setState({
       post: this.props.posts,
       isLoaded: true
     });
+
+    if(document.querySelector("#item-1")){
+      document.querySelector("#item-1").click();
+    }
     let int = setInterval(() => this.getPostState(), 100);
     this.setState({ int });
   }

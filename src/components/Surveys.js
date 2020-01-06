@@ -17,34 +17,10 @@ export default class Surveys extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/surveys")
-      .then(res => {
-        this.setState({
-          surveys: res.data,
-          isLoaded: true
-        });
-      })
-      .then(res => {
-        let surveymedia = this.state.surveys.map((survey, item) => {
-          let surveyType = survey.acf.survey_type.value.split(" ");
-          if (surveyType[0].toLowerCase() === "strive") {
-            return survey.acf.strive_media;
-          }
-          if (surveyType[0].toLowerCase() === "quarterly") {
-            return survey.acf.strive_media;
-          }
-          else{
-            return null
-          }
-        });
-        if (surveymedia.length > 0) {
-          this.setState({
-            surveyMedia: surveymedia,
-          });
-        }
-      })
-      .catch(err => console.log("Error:", err));
+   this.setState({
+     surveys: this.props.surveys,
+     isLoaded: true
+   })
   }
   renderSurveys = () => {
     return this.state.surveys.map((survey, i) => {
@@ -116,7 +92,6 @@ export default class Surveys extends Component {
     document.getElementById("strive-modal").classList.remove("is-active");
   };
   render() {
-    
     if (this.state.isLoaded /*&& this.state.surveyMedia.length > 0 */) {
       return (
         <Fragment>

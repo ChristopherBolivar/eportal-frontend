@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import PonderingPeople from '../img/people-pondering.png';
-import axios from "axios";
 
 export default class Faq extends Component {
   state = {
@@ -9,16 +8,11 @@ export default class Faq extends Component {
     isLoaded: false
   };
   componentDidMount() {
-    axios
-      .get("https://staging-space.bvdpartners.com/portal/wp-json/wp/v2/faq?per_page=100")
-      .then(res => {
-       
-        this.setState({
-          faqs: res.data,
-          isLoaded: true
-        });
-      })
-      .catch(err => console.log(err));
+    console.log(this.props.faqs)
+    this.setState({
+      faqs: this.props.faqs,
+      isLoaded: true
+    });
   }
   displayFAQ = () => {
     let sortedFaqs = [...this.state.faqs]
@@ -53,7 +47,7 @@ export default class Faq extends Component {
     }
   };
   render() {
-    if (this.state.isLoaded) {
+    if (this.state.faqs) {
       return (
         <div className="container-fluid faqs">
           <div className="row faq-row">

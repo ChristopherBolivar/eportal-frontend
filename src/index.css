@@ -7,6 +7,20 @@
 	src: url('Gotham-Book.otf');
 }
 
+/* input, textarea {
+    background: none !important;
+    border-radius: 0px !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 5px solid #fff !important; 
+    color: #fff !important;
+}
+input::placeholder , textarea::placeholder  {
+   color: #fff !important;
+   bottom: 0!important;
+} */
+
 a, a:hover, a:visited {
     color: inherit !important;
     text-decoration: none !important;
@@ -586,18 +600,41 @@ div[class*="faq-div"] {
     }
     
     .post-img{
-        height: 80px;
+        height: 261px;
+        z-index: 90;
     }
+    .news-container {
+        position: relative !important;
+    }
+
     .news-content {
         flex: 100% !important;
         max-width: 100% !important;
         padding: 0;
         margin: 0;
+        height: 100%;
+        position: absolute !important;
+        top: 0;
+        background: rgba(0,36,91,.7);
+        z-index: 100;
+        transition: .5s ease-in;
     }
+    .news-content:hover {
+        background:  rgba(0,36,91,.3);
+    }
+    .title {
+        margin-top: 40% !important;
+    }
+    .news-content h5, .news-content p,  .news-content a, .news-content {
+        color: #fff;
+        text-align: center;
+    }
+  
     .news-exerpt{
         height: 50px;
         max-height: 50px;
         overflow: scroll;
+        display: none;
     }
     div[class*="news-div"]{
         left: 0.05rem;

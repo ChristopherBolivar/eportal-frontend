@@ -33,7 +33,7 @@ export default class Nav extends Component {
 			}
 	   })
 		console.log(filter, 'here')
-		 this.setState({
+		  this.setState({
 			searchResultsEvents: filter,
 			searchResultsFaqs: filterFaqs
 		})

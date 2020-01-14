@@ -141,7 +141,6 @@ export default class Posts extends Component {
   };
   
   render() {
-    const { isLoaded } = this.state;
     
 
     if (this.state.PostisLoaded &&

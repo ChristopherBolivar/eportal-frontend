@@ -1,5 +1,4 @@
 import React, {Component, Fragment } from "react";
-import axios from "axios";
 
 export default class Surveys extends Component {
   constructor(props) {

@@ -24,7 +24,7 @@ export default class contact extends Component {
             formTargetLoaded: true,
             
         })
-       }
+       } 
        if(e.target.value.toLowerCase() === 'human resources'){
         this.setState({
             formType: e.target.value,
@@ -41,21 +41,17 @@ export default class contact extends Component {
 <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
 
 <h2 className="mt-4">Contacting {this.state.formType} ({this.state.formSendTo})</h2>
-    <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input id="name" type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} />
+    <div className="form-group omrs-input-group">
+        <input placeholder="Full Name" id="name" type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} />
     </div>
     <div className="form-group">
-        <label htmlFor="exampleInputEmail1">Email address</label>
-        <input type="email" className="form-control" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
+        <input placeholder="Email Address" type="email" className="form-control" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} />
     </div>
     <div className="form-group">
-        <label htmlFor="subject">Subject</label>
-        <input id="subject" type="text" className="form-control" aria-describedby="emailHelp" value={this.state.subject} onChange={this.onSubjectChange.bind(this)} />
+        <input placeholder="Subject" id="subject" type="text" className="form-control" aria-describedby="emailHelp" value={this.state.subject} onChange={this.onSubjectChange.bind(this)} />
     </div>
     <div className="form-group">
-        <label htmlFor="message">Message</label>
-        <textarea className="form-control" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
+        <textarea placeholder="Please enter your message here" className="form-control" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} />
     </div>
     <button type="submit" className="btn btn-primary">Submit</button>
     <div id={`${this.state.formType.split(" ").join("")}-alert`} className="alert alert-success deactive" role="alert">
